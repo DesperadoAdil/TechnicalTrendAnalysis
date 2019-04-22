@@ -1,2 +1,1 @@
-# backend
-后端部分
+# Technical Trend Analysis Web App.
