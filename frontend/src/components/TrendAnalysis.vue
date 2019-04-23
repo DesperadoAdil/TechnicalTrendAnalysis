@@ -15,7 +15,6 @@
         <h2>热点关键词，共{{ msg }}条</h2>
       </i-col>
       <i-col span="18">
-        <h2>热度图</h2>
       </i-col>
     </Row>
     <div class="layout-content">
@@ -28,6 +27,7 @@
           </h6>
         </i-col>
         <i-col span="18">
+          <canvas id="myChart2"></canvas>
           <h6 v-for="data in dataList">
             <li>序列：</li>
             {{ data.list }}
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import Chart from 'chart.js';
 export default {
   name: 'TrendAnalysis',
   data () {
@@ -57,6 +58,31 @@ export default {
   },
   mounted () {
     this.gettitle()
+
+    var ctx2 = document.getElementById("myChart2");
+
+    var myChart2 = new Chart(ctx2, {
+            type: "line",
+            data: {
+                labels: ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017"],
+                datasets: [
+                    {
+                        label: "热度图",
+                        backgroundColor: "rgba(225,10,10,0.3)",
+                        borderColor: "rgba(225,103,110,1)",
+                        borderWidth: 1,
+                        pointStrokeColor: "#fff",
+                        pointStyle: "crossRot",
+                        data: [65, 59, 0, 81, 56, 10, 40, 22, 32, 54, 10, 30, 34, 54, 67, 76, 52, 27],
+                        cubicInterpolationMode: "monotone",
+                        spanGaps: "false",
+                        fill: "false"
+                    }
+                ]
+            },
+            options: {
+            }
+        });
   },
   methods: {
     gettitle () {
