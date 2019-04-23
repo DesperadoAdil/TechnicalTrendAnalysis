@@ -1,4 +1,4 @@
-# analysis
+# TrendAnalysis
 
 > Technical Trend Analysis
 
