@@ -12,4 +12,4 @@ Session(app)
 with open("./app/cache", "rb") as f:
     cache = pickle.load(f)
 
-from app import views, utils
+from app import views, utils, hype_cycle

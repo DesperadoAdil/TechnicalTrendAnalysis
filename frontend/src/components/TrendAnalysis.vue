@@ -27,8 +27,8 @@
           </h6>
         </i-col>
         <i-col span="18">
-          <canvas id="myChart"></canvas>
-
+          <canvas id="myChart"></canvas><br>
+          <canvas id="myChart2"></canvas>
         </i-col>
       </Row>
     </div>
@@ -74,6 +74,7 @@ export default {
         "title" : title
       }
       this.getgraph(data)
+      this.gettrend(data)
       this.$http.post('/api/data', data).then(res => {
         this.msg = res.data.length
         for (var i = 0; i < this.msg; i++) {
@@ -102,6 +103,43 @@ export default {
             title : {
               display: true,
               text: '热度图'
+            }
+          }
+        });
+      })
+    },
+    gettrend (data) {
+      var c = document.getElementById("myChart2")
+      var ctx = c.getContext("2d")
+      ctx.clearRect(0, 0, c.width, c.height)
+      ctx.beginPath()
+
+      this.$http.post('/api/trenddata', data).then(res => {
+        var myChart = new Chart(ctx, {
+          type: "line",
+          data: res.data,
+          options: {
+            events : ['click'],
+            elements: {
+              line: {
+                tension: 0 // disables bezier curves
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  max: 1,
+                  min: 0
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  max: 1,
+                  min: 0
+                }
+              }]
             }
           }
         });

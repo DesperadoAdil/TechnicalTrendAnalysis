@@ -2,6 +2,7 @@
 from flask import *
 from app import app, cache
 from .utils import TITLELIST
+from .hype_cycle import load_hype_cycle
 
 import random
 
@@ -82,9 +83,6 @@ def graph_data():
             else:
                 dataset['data'].append(0)
         datasets.append(dataset)
-        '''ret[i] = {}
-        ret[i]["name"] = heat[i][0]
-        ret[i]["data"] = dataset['data']'''
 
     ret['labels'] = labels
     ret['datasets'] = datasets
@@ -107,6 +105,51 @@ for i in range(20):
     print (i, heat[i][0])
     hype_cycle_scatter(heat[i][1][1], heat[i][0], i)
 show_hype_cycle()'''
+@app.route('/trenddata', methods = ["POST"])
+def trend():
+    try:
+        data = json.loads(request.get_data())
+    except:
+        abort(400)
+
+    ret = {}
+    labels = []
+    datasets = []
+
+    if "heat" in session:
+        heat = session.get("heat")[data["title"]]
+    else:
+        first_request()
+        heat = session.get("heat")[data["title"]]
+
+    dataset = {}
+    dataset['label'] = "技术成熟度曲线"
+    r = random.randint(0, 256)
+    g = random.randint(0, 256)
+    b = random.randint(0, 256)
+    dataset['borderColor'] = 'rgba(%s, %s, %s, %s)' % (r, g, b, 1.0)
+    dataset['backgroundColor'] = 'rgba(%s, %s, %s, %s)' % (r, g, b, 1.0)
+    dataset['borderWidth'] = 1
+    dataset['pointStrokeColor'] = "#fff"
+    dataset['pointRadius'] = 0
+    dataset['cubicInterpolationMode'] = "default"
+    dataset['spanGaps'] = "true"
+    dataset['fill'] = "false"
+    dataset['data'] = []
+    (X, Y) = load_hype_cycle()
+    for i in range(len(X)):
+        d = {}
+        d['x'] = X[i]
+        d['y'] = Y[i]
+        labels.append(X[i])
+        dataset['data'].append(d)
+    datasets.append(dataset)
+
+    ret['labels'] = labels
+    ret['datasets'] = datasets
+
+    return jsonify(ret)
+
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
