@@ -22,7 +22,7 @@ def first_request():
 
 
 """
-@api {get} /data 获取领域
+@api {get} /api/data 获取领域
 @apiVersion 0.1.1
 @apiName GetData
 @apiGroup General
@@ -44,6 +44,7 @@ def first_request():
         "物联网"
     ]
 """
+@app.route('/api/data', methods = ["GET"])
 @app.route('/data', methods = ["GET"])
 def get_data():
     ret = []
@@ -54,7 +55,7 @@ def get_data():
 
 
 """
-@api {post} /data 获取热度
+@api {post} /api/data 获取热度
 @apiVersion 0.1.1
 @apiName PostData
 @apiGroup General
@@ -90,6 +91,7 @@ def get_data():
         <p>The browser (or proxy) sent a request that this server could not understand.</p>
     }
 """
+@app.route('/api/data', methods = ["POST"])
 @app.route('/data', methods = ["POST"])
 def post_data():
     try:
@@ -107,7 +109,7 @@ def post_data():
 
 
 """
-@api {post} /graphdata 获取年份-热度数据
+@api {post} /api/graphdata 获取年份-热度数据
 @apiVersion 0.1.1
 @apiName PostGraphData
 @apiGroup General
@@ -168,6 +170,7 @@ def post_data():
         <p>The browser (or proxy) sent a request that this server could not understand.</p>
     }
 """
+@app.route('/api/graphdata', methods = ["POST"])
 @app.route('/graphdata', methods = ["POST"])
 def graph_data():
     try:
@@ -214,7 +217,7 @@ def graph_data():
 
 
 """
-@api {post} /trenddata 获取技术成熟度数据
+@api {post} /api/trenddata 获取技术成熟度数据
 @apiVersion 0.1.1
 @apiName PostTrendData
 @apiGroup General
@@ -283,6 +286,7 @@ def graph_data():
         <p>The browser (or proxy) sent a request that this server could not understand.</p>
     }
 """
+@app.route('/api/trenddata', methods = ["POST"])
 @app.route('/trenddata', methods = ["POST"])
 def trend():
     try:

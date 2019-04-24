@@ -3,7 +3,9 @@
 
 ---
 
-API：见apidoc文档
+API：见apidoc文档  
+生成文档:  
+`apidoc -i .\backend\ -o .\apidoc\`
 
 ## 项目部署
 

@@ -1,0 +1,20 @@
+{
+  "name": "APIDoc",
+  "version": "0.1.0",
+  "description": "A sample of User API document generated from apiDoc",
+  "title": "APIDoc",
+  "url" : "http://localhost:80",
+  "sampleUrl": "http://localhost:80",
+  "header": {
+    "title": "Overview",
+    "filename": "header.md"
+  },
+  "footer": {
+    "title": "Copyright",
+    "filename": "footer.md"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
