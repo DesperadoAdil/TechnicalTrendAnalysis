@@ -15,7 +15,6 @@
         <h2>热点关键词，共{{ msg }}条</h2>
       </i-col>
       <i-col span="18">
-        <h2>热度图</h2>
       </i-col>
     </Row>
     <div class="layout-content">
@@ -74,6 +73,7 @@ export default {
       let data = {
         "title" : title
       }
+      this.getgraph(data)
       this.$http.post('/api/data', data).then(res => {
         this.msg = res.data.length
         for (var i = 0; i < this.msg; i++) {
@@ -86,13 +86,24 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    getgraph (data) {
+      var c = document.getElementById("myChart")
+      var ctx = c.getContext("2d")
+      ctx.clearRect(0, 0, c.width, c.height)
+      ctx.beginPath()
 
       this.$http.post('/api/graphdata', data).then(res => {
-        var ctx = document.getElementById("myChart");
         var myChart = new Chart(ctx, {
           type: "line",
           data: res.data,
-          options: {}
+          options: {
+            events : ['click'],
+            title : {
+              display: true,
+              text: '热度图'
+            }
+          }
         });
       })
     }
