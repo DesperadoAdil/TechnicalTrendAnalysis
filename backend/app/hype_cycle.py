@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 import random
+import pickle
 
 X = None
 Y = None
@@ -12,11 +13,11 @@ fig = plt.figure()
 
 # curve fitting by point tracing method
 # the graph is inverted
-def load_hype_cycle():
+def load_hype_cycle(path = './hype_cycle.bmp'):
     global X, Y
     X = [0]
     Y = [0]
-    img = Image.open('./hype_cycle.bmp')
+    img = Image.open(path)
     n, m = img.size
     for i in range(0, n):
         y = []
@@ -99,11 +100,41 @@ on_move_id = fig.canvas.mpl_connect('motion_notify_event', on_move)
 
 if __name__ == '__main__':
     # show_hype_cycle()
-    '''hype_cycle_scatter([0, 1, 2, 3, 4, 5, 6, 7, 8], "test1", 0, 3)
-    hype_cycle_scatter([10, 9, 8, 2, 1, 0, 10, 2], "test2", 1, 3)
-    hype_cycle_scatter([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 2.5], "test3", 2, 3)
-    show_hype_cycle()'''
-    load_hype_cycle()
-    for i in range(len(X)):
-        print (X[i], Y[i])
-    show_hype_cycle()
+    load_hype_cycle('../hype_cycle.bmp')
+
+    from utils import TITLELIST
+
+    with open("./cache", "rb") as f:
+        cache = pickle.load(f)
+    #for i in range(len(X)):
+    #    print (X[i], Y[i])
+    #show_hype_cycle()
+    heat = {}
+    d = {}
+    for title in TITLELIST:
+        if title not in cache['pos']:
+            heat[title] = {}
+            for key,value in cache[title].items():
+                sum = 0
+                for num in value.values():
+                    sum += num
+                heat[title][key] = sum
+            heat[title] = sorted(heat[title].items(), key = lambda v : v[1], reverse = True)
+
+            d[title] = []
+            for i in range(20):
+                l = []
+                l.extend(cache[title][heat[title][i][0]].values())
+                ((x, y), loss) = get_pos(l)
+                t = {}
+                t['x'] = x
+                t['y'] = y
+                d[title].append(t)
+
+        print ("finish "+title)
+
+    print (d)
+
+    cache['pos'] = d
+    with open("./cache", "wb") as f:
+        pickle.dump(cache, f)

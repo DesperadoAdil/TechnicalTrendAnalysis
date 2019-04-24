@@ -120,6 +120,10 @@ export default {
           data: res.data,
           options: {
             events : ['click'],
+            title : {
+              display: true,
+              text: '技术成熟度曲线图'
+            },
             elements: {
               line: {
                 tension: 0 // disables bezier curves
