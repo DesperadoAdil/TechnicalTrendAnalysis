@@ -1,5 +1,6 @@
-## 技术趋势分析网站
-2019/4/25  [返回](https://desperadoadil.github.io/FlaskLearning/)  
+# 技术趋势分析网站
+2019/4/25  
+[返回首页](https://desperadoadil.github.io/)
 
 ---
 [View on Github](https://github.com/DesperadoAdil/TechnicalTrendAnalysis)  
@@ -77,16 +78,16 @@
 
 ```
 
-### 项目启动
+## 项目启动
 - 支持前后端分离  
-    - 进入backend文件运行`python run.py`或`python run.py debug`（debug模式）  
+    - 进入backend文件运行`python run.py`或 `python run.py debug`（debug模式）  
         部署在本机80端口
     - 进入frontend文件运行`npm run dev`  
         部署在本机8080端口
 - 后端有完整的网页模板和静态文件，所以也可以只启动后端  
-    - 进入backend文件运行`python run.py`或`python run.py debug`（debug模式）  
+    - 进入backend文件运行`python run.py`或 `python run.py debug`（debug模式）  
 
-### 项目实现方法
+## 项目实现方法
 - 后端  
     - Flask+Cache+Redis  
     - 后端框架采用Python Flask，需要Flask 1.0.2  
@@ -101,7 +102,7 @@
     - 详见/docs/apidoc/index.html  
     - 使用[apidoc](https://github.com/apidoc/apidoc)生成  
 
-### 可视化方法Chart.js
+## 可视化方法Chart.js
 - 年份热度图
     ```js
     var c = document.getElementById("myChart")
@@ -158,9 +159,9 @@
     }
     ```
 
-### 关键词映射到技术成熟度曲线位置的方法
+## 关键词映射到技术成熟度曲线位置的方法
 采用了已有的关键词映射到技术成熟度曲线位置的方法  
 
-### 效果截图
+## 效果截图
 ![Image text](./大数据.png)  
 ![Image text](./人工智能.png)  
