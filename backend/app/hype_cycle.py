@@ -135,6 +135,7 @@ if __name__ == '__main__':
 
     print (d)
 
-    cache['pos'] = d
+    if d != None and d != {}:
+        cache['pos'] = d
     with open("./cache", "wb") as f:
         pickle.dump(cache, f)

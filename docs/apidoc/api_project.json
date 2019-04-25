@@ -1,0 +1,28 @@
+{
+  "name": "APIDoc",
+  "version": "0.1.0",
+  "description": "A sample of User API document generated from apiDoc",
+  "title": "APIDoc",
+  "url": "http://localhost:80",
+  "sampleUrl": "http://localhost:80",
+  "header": {
+    "title": "Overview",
+    "content": "<h2>Overview</h2>\n<p><a href=\"https://github.com/DesperadoAdil/TechnicalTrendAnalysis\">项目链接</a><br>\n作者<a href=\"https://desperadoadil.github.io/\">Adil</a><br>\n以下是API文档:</p>\n"
+  },
+  "footer": {
+    "title": "Copyright",
+    "content": "<p>Copyright © 2019<br>\n<a href=\"https://desperadoadil.github.io/\">Adil</a> All Rights Reserved</p>\n"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
+  "generator": {
+    "name": "apidoc",
+    "time": "2019-04-25T01:31:43.248Z",
+    "url": "http://apidocjs.com",
+    "version": "0.17.7"
+  }
+}

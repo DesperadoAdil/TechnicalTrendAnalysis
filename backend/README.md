@@ -5,7 +5,7 @@
 
 API：见apidoc文档  
 生成文档:  
-`apidoc -i .\backend\ -o .\apidoc\`
+`apidoc -i backend/ -o docs/apidoc/`
 
 ## 项目部署
 

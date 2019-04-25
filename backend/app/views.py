@@ -8,7 +8,6 @@ import random
 
 @app.before_first_request
 def first_request():
-    print ("first_request")
     heat = {}
     for title in TITLELIST:
         heat[title] = {}

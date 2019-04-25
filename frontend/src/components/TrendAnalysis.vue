@@ -50,6 +50,8 @@ export default {
           time : ''
         }
       ],
+      chart1 : null,
+      chart2 : null
     }
   },
   mounted () {
@@ -95,14 +97,14 @@ export default {
       ctx.beginPath()
 
       this.$http.post('/api/graphdata', data).then(res => {
-        var myChart = new Chart(ctx, {
+        if (this.chart1 != null) this.chart1.destroy();
+        this.chart1 = new Chart(ctx, {
           type: "line",
           data: res.data,
           options: {
-            events : ['click'],
             title : {
               display: true,
-              text: '热度图'
+              text: '年份-热度图'
             }
           }
         });
@@ -115,11 +117,11 @@ export default {
       ctx.beginPath()
 
       this.$http.post('/api/trenddata', data).then(res => {
-        var myChart = new Chart(ctx, {
+        if (this.chart2 != null) this.chart2.destroy();
+        this.chart2 = new Chart(ctx, {
           type: "line",
           data: res.data,
           options: {
-            events : ['click'],
             title : {
               display: true,
               text: '技术成熟度曲线图'
