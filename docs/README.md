@@ -130,7 +130,8 @@
 - 技术成熟度曲线图  
     基本同上，但有几点特别：  
     1.技术成熟度曲线是由大量点构成的，那么为了加快绘制线条的速度，禁用了贝塞尔曲线  
-    2.X轴Y轴均是0到1  
+    2.Y轴是0到1，步长0.1  
+    3.由于X轴并没有什么用，于是不显示  
     ```js
     options: {
       title : {
@@ -144,17 +145,14 @@
       },
       scales: {
         xAxes: [{
-          ticks: {
-            beginAtZero: true,
-            max: 1,
-            min: 0
-          }
+          display: false,
         }],
         yAxes: [{
           ticks: {
             beginAtZero: true,
             max: 1,
-            min: 0
+            min: 0,
+            stepSize: 0.1
           }
         }]
       }
