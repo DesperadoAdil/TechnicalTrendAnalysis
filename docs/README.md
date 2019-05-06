@@ -79,6 +79,8 @@
 ```
 
 ## 项目启动
+- 启动前提
+    - 需要在本机6379端口运行Redis服务端  
 - 支持前后端分离  
     - 进入backend文件运行`python run.py`或 `python run.py debug`（debug模式）  
         部署在本机80端口

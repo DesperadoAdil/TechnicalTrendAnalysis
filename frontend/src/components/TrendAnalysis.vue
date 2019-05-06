@@ -10,16 +10,10 @@
     </Menu>
     <br>
     <h1>{{ title }}</h1>
-    <Row>
-      <i-col span="6">
-        <h2>热点关键词，共{{ msg }}条</h2>
-      </i-col>
-      <i-col span="18">
-      </i-col>
-    </Row>
     <div class="layout-content">
       <Row>
         <i-col span="6">
+          <h2>热点关键词，共{{ msg }}条</h2><br>
           <h6 v-for="data in dataList">
             {{ data.name }}
             <li>热度：</li>
@@ -133,17 +127,14 @@ export default {
             },
             scales: {
               xAxes: [{
-                ticks: {
-                  beginAtZero: true,
-                  max: 1,
-                  min: 0
-                }
+                display: false,
               }],
               yAxes: [{
                 ticks: {
                   beginAtZero: true,
                   max: 1,
-                  min: 0
+                  min: 0,
+                  stepSize: 0.1
                 }
               }]
             }
