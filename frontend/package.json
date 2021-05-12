@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "iview": "^3.4.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
